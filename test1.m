@@ -23,3 +23,5 @@ C_2 = ttprod_def(A, B) ;
 pom1 = ten_ten_prod(U, S) ;
 pom2 = ten_ten_prod(pom1, V) ;
 
+A
+ttrans(A)

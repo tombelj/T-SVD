@@ -8,20 +8,20 @@ function [U, S, V] = tsvd(A) ;
     V_fft = zeros(m, m, n) ;
 
     pom = ceil((n+1)/2) ;
-    for i = 1 : n
-      [U_fft(:, :, i), S_fft(:, :, i), V_fft(:, :, i)] = svd(squeeze(A_fft(:, :, i))) ;
-      V_fft(:, :, i) = V_fft(:, :, i)' ;
+##    for i = 1 : n
+##      [U_fft(:, :, i), S_fft(:, :, i), V_fft(:, :, i)] = svd(squeeze(A_fft(:, :, i))) ;
+##      V_fft(:, :, i) = V_fft(:, :, i)' ;
+##    end
+    for i = 1 : pom
+        [U_fft(:, :, i), S_fft(:, :, i), V_fft(:, :, i)] = svd(squeeze(A_fft(:, :, i))) ;
+        V_fft(:, :, i) = V_fft(:, :, i)' ;
     end
-##    for i = 1 : pom
-##        [U_fft(:, :, i), S_fft(:, :, i), V_fft(:, :, i)] = svd(squeeze(A_fft(:, :, i))) ;
-##        V_fft(:, :, i) = V_fft(:, :, i)' ;
-##    end
-##
-##    for i = pom + 1 : n
-##      U_fft(:, :, i) = conj(U_fft(:, :, n-i+2));
-##      S_fft(:, :, i) = conj(S_fft(:, :, n-i+2));
-##      V_fft(:, :, i) = conj(V_fft(:, :, n-i+2));
-##    end
+
+    for i = pom + 1 : n
+      U_fft(:, :, i) = conj(U_fft(:, :, n-i+2));
+      S_fft(:, :, i) = conj(S_fft(:, :, n-i+2));
+      V_fft(:, :, i) = conj(V_fft(:, :, n-i+2));
+    end
 
 
     U = ifft(U_fft, [], 3) ;

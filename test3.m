@@ -2,7 +2,7 @@
 close all ;
 clear;
 
-dim = 64 ;
+dim = 32 ;
 
 if(dim == 64)
   a = load('Yale_64x64.mat') ;
@@ -16,21 +16,21 @@ b = a.gnd ;
 if(dim == 64)
   j = 12 ;
   dim2 = 164 ;
-else 
+else
   j = 400 ;
   dim2 = 2413 ;
 end
 
-for j = 1 : 20 : 164
+for j = 65 : 400 : dim2
 
   T = zeros(dim, dim2, dim) ;
-  for i = 1 : dim2+1 
+  for i = 1 : dim2+1
           if(i ~= j)
-          
+
             T(:, i, :) = reshape(A(i, :), dim, dim) ;
-            
+
           end
-          
+
   end
 
   J = reshape(A(j, :), dim, dim) ;
@@ -39,7 +39,7 @@ for j = 1 : 20 : 164
   imagesc(J);
   colormap(gray);
 
-  retval = facesTSVD(T, J, 30) ;
+  retval = facesTSVD(T, J, 32) ;
 
   figure,
   imagesc(retval);
