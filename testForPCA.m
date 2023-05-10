@@ -2,7 +2,8 @@
 close all ;
 clear;
 
-dim = 32 ;
+
+dim = 64 ;
 
 if(dim == 64)
   a = load('Yale_64x64.mat') ;
@@ -21,7 +22,7 @@ else
   dim2 = 2413 ;
 end
 
-for j = 2 : 400 : dim2
+for j = 2 : 22 : dim2
   tic
   T = zeros(dim, dim2, dim) ;
   for i = 1 : dim2+1
@@ -39,7 +40,7 @@ for j = 2 : 400 : dim2
   imagesc(J);
   colormap(gray);
 
-  retval = facesTSVD(T, J, 64) ;
+  retval = facesPCA(T, J, 16) ;
 
   figure,
   imagesc(retval);
@@ -47,4 +48,5 @@ for j = 2 : 400 : dim2
   toc
 
 end
+
 

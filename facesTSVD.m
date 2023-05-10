@@ -38,7 +38,7 @@ function retval = facesTSVD (L, J, k)
     end
 
   end
-
+  printf("Frobeniusova norma u metodi T-SVD za sliku iznosi: %f\n", min);
   retval = squeeze(L(:, indeks, :)) ;
 
 end

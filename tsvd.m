@@ -1,6 +1,5 @@
 function [U, S, V] = tsvd(A) ;
 
-    tic
     [l, m, n] = size(A) ;
     A_fft = fft(A, [], 3) ;
     U_fft = zeros(l, l, n) ;
@@ -28,6 +27,6 @@ function [U, S, V] = tsvd(A) ;
     S = ifft(S_fft, [], 3) ;
     V = ifft(V_fft, [], 3) ;
 
-    toc
+
 
 end
